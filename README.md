@@ -6,8 +6,8 @@ This is built from the public SS repo [forked by Checksum](https://github.com/Ch
 [CrazyLittle](https://github.com/CrazyLittle) and I originally shared these builds only with our friends. Now, we are making them public as they may provide an option for members of the Beat Saber community who may wish to move off the original obfuscated plugins.
 
 ### DISCLOSURE & DISCLAIMER: Read this before you install the plugin.
-
-I **have not** personally reviewed every line of code in the repo from which this was forked. There are over 12,900 lines and I just don't have the time. I **have only**:
+There are minor bugs present from the public repo that I've not bothered to fix.
+<br>I **have not** personally reviewed every line of code in the repo from which this was forked. There are over 12,900 lines and I just don't have the time. I **have only**:
 
 1) Made modifications to enable score and replay uploads
 2) Made modifications to some of the UI texts
