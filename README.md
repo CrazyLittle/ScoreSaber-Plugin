@@ -15,3 +15,10 @@ I **have not** personally reviewed every line of code in the repo from which thi
 4) Quickly reviewed the code for uploading replay content **however this was by no means an in-depth exhaustive review**
 
 ### ***TLDR: I HAVE NOT REVIEWED EVERY LINE IN THIS BUILD AND THIS BUILD STILL TALKS TO AND RECEIVES DATA FROM THE ORIGINAL SCORESABER SERVERS, WHOSE BACKEND INCLUDING WHAT DATA CAN BE SENT, WE HAVE NO VISIBILITY OF OR CONTROL OVER. SO USE DISCRETION.***
+
+<br>
+
+## Demo:
+<img src="https://github.com/zeph-yr/ScoreSaber-Plugin/blob/master/Screenshots/image_1b.png" width="750">
+<img src="https://github.com/zeph-yr/ScoreSaber-Plugin/blob/master/Screenshots/image_2b.png" width="750">
+<img src="https://github.com/zeph-yr/ScoreSaber-Plugin/blob/master/Screenshots/image_3.png" width="750">
