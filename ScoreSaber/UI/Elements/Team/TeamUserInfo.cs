@@ -125,21 +125,21 @@ namespace ScoreSaber.UI.Elements.Team {
         [UIAction("username-click")]
         public void UsernameClick() {
 
-            if (UsernameText == "Umbranox") {
-                if (clickCounter < 5) {
-                    clickCounter++;
-                }
-                if (clickCounter == 5) {
-                    SetImage("r.jpg");
-                    UsernameText = "🌧 Rain ❤";
-                    DiscordLink = "128460955272216576";
-                    TwitterLink = "VaporRain";
-                    TwitchLink = "inkierain";
-                    NotifyPropertyChanged("profilePicture");
-                    YoutubeLink = null;
-                    GithubLink = null;
-                }
-            }
+            //if (UsernameText == "Umbranox") {
+            //    if (clickCounter < 5) {
+            //        clickCounter++;
+            //    }
+            //    if (clickCounter == 5) {
+            //        SetImage("r.jpg");
+            //        UsernameText = "🌧 Rain ❤";
+            //        DiscordLink = "128460955272216576";
+            //        TwitterLink = "VaporRain";
+            //        TwitchLink = "inkierain";
+            //        NotifyPropertyChanged("profilePicture");
+            //        YoutubeLink = null;
+            //        GithubLink = null;
+            //    }
+            //}
         }
 
         [UIAction("#post-parse")]

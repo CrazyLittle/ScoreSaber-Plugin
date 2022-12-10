@@ -19,6 +19,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using IPALogger = IPA.Logging.Logger;
+using IPA.Config.Stores;
 
 #endregion
 
@@ -39,9 +40,11 @@ namespace ScoreSaber {
         internal Harmony harmony;
 
         [Init]
-        public Plugin(IPALogger logger, PluginMetadata metadata, Zenjector zenjector) {
+        public Plugin(IPALogger logger, PluginMetadata metadata, Zenjector zenjector, IPA.Config.Config config) {
             Log = logger;
             Instance = this;
+
+            PluginConfig.Instance = config.Generated<PluginConfig>();
 
             zenjector.UseLogger(logger);
             zenjector.Expose<ComboUIController>("Environment");

@@ -53,16 +53,16 @@ namespace ScoreSaber.Core.Utils {
 
         internal static Tuple<string, string> GetCrownDetails(string playerId) {
 
-            switch (playerId) {
-                case PlayerIDs.woops:
-                    return new Tuple<string, string>("ScoreSaber.Resources.crown-bronze.png", "Beat Saber Invitational 3rd place");
-                case PlayerIDs.Jones:
-                    return new Tuple<string, string>("ScoreSaber.Resources.crown-silver.png", "Beat Saber Invitational 2nd place");
-                case PlayerIDs.Umbranox:
-                    return new Tuple<string, string>("ScoreSaber.Resources.crown-umby.png", "Owner of ScoreSaber");
-                case PlayerIDs.Rain:
-                    return new Tuple<string, string>("ScoreSaber.Resources.crown-rain.png", "Owner of Umbranox's heart");
-            }
+            //switch (playerId) {
+            //    case PlayerIDs.woops:
+            //        return new Tuple<string, string>("ScoreSaber.Resources.crown-bronze.png", "Beat Saber Invitational 3rd place");
+            //    case PlayerIDs.Jones:
+            //        return new Tuple<string, string>("ScoreSaber.Resources.crown-silver.png", "Beat Saber Invitational 2nd place");
+            //    case PlayerIDs.Umbranox:
+            //        return new Tuple<string, string>("ScoreSaber.Resources.crown-umby.png", "Owner of ScoreSaber");
+            //    case PlayerIDs.Rain:
+            //        return new Tuple<string, string>("ScoreSaber.Resources.crown-rain.png", "Owner of Umbranox's heart");
+            //}
             return new Tuple<string, string>("", "");
         }
 
