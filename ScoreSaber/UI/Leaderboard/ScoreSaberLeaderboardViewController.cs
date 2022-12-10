@@ -253,7 +253,7 @@ namespace ScoreSaber.UI.Leaderboard {
                 var beatmapData = await difficultyBeatmap.GetBeatmapDataAsync(difficultyBeatmap.level.environmentInfo, _playerDataModel.playerData.playerSpecificSettings);
 
                 if (LeaderboardUtils.ContainsV3Stuff(beatmapData)) {
-                    SetErrorState(tableView, loadingControl, null, null, "Maps with new note types currently not supported", false);
+                    SetErrorState(tableView, loadingControl, null, null, PluginConfig.Instance.V3Unsupported, false);
                     return;
                 }
 
@@ -303,8 +303,8 @@ namespace ScoreSaber.UI.Leaderboard {
 
             if (leaderboardInfo.Ranked) {
                 _panelView.SetRankedStatus(leaderboardInfo.PositiveModifiers
-                    ? "Ranked (DA = +0.02, GN +0.04)"
-                    : "Ranked (modifiers disabled)");
+                    ? PluginConfig.Instance.ModifiersEnabled
+                    : PluginConfig.Instance.ModifiersDisabled);
                 return;
             }
             if (leaderboardInfo.Qualified) {
@@ -315,7 +315,7 @@ namespace ScoreSaber.UI.Leaderboard {
                 _panelView.SetRankedStatus("Loved");
                 return;
             }
-            _panelView.SetRankedStatus("Unranked");
+            _panelView.SetRankedStatus(PluginConfig.Instance.Unranked);
         }
 
         public int GetPlayerScoreIndex(LeaderboardMap leaderboardMap) {

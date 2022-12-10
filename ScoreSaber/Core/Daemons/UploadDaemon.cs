@@ -159,7 +159,7 @@ namespace ScoreSaber.Core.Daemons {
                 await difficultyBeatmap.GetBeatmapDataAsync(defaultEnvironment, _playerDataModel.playerData.playerSpecificSettings);
 
             if (LeaderboardUtils.ContainsV3Stuff(beatmapData)) {
-                UploadStatusChanged?.Invoke(UploadStatus.Error, "OPENSOURCE XX New note type not supported, not uploading XX");
+                UploadStatusChanged?.Invoke(UploadStatus.Error, PluginConfig.Instance.UploadV3Unsupported);
                 return;
             }
 
@@ -209,7 +209,7 @@ namespace ScoreSaber.Core.Daemons {
                 if (currentLeaderboard != null) {
                     if (currentLeaderboard.LeaderboardInfo.PlayerScore != null) {
                         if (results.modifiedScore < currentLeaderboard.LeaderboardInfo.PlayerScore.ModifiedScore) {
-                            UploadStatusChanged?.Invoke(UploadStatus.Error, "OPENSOURCE XX Didn't beat score, not uploading. XX");
+                            UploadStatusChanged?.Invoke(UploadStatus.Error, PluginConfig.Instance.UploadScoreTooLow);
                             UploadStatusChanged?.Invoke(UploadStatus.Done, "");
                             Uploading = false;
                             return;

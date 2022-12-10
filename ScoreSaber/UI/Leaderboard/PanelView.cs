@@ -42,7 +42,7 @@ namespace ScoreSaber.UI.Leaderboard {
         [UIComponent("prompt-loader")]
         protected readonly ImageView _promptLoader = null;
 
-        private string _globalLeaderboardRanking = "<b><color=#FFDE1A>" + PluginConfig.Instance.GlobalRank + ": </color></b> Loading...";
+        private string _globalLeaderboardRanking = "<b><color=#FFDE1A>" + PluginConfig.Instance.GlobalRanking + ": </color></b> " + PluginConfig.Instance.Loading + "...";
         [UIValue("global-leaderboard-ranking")]
         protected string globalLeaderboardRanking {
             get => _globalLeaderboardRanking;
@@ -54,7 +54,7 @@ namespace ScoreSaber.UI.Leaderboard {
         //    <clickable-text text="~global-leaderboard-ranking" on-click="clicked-ranking" font-size="3.5" overflow-mode="Ellipsis" italics="true" align="Left" />
         //    <horizontal active="~is-loading" pref-width="70" pref-height="10">
 
-        private string _leaderboardRankedStatus = "<b><color=#FFDE1A>" + PluginConfig.Instance.RankedStatus + ":</color></b> Loading...";
+        private string _leaderboardRankedStatus = "<b><color=#FFDE1A>" + PluginConfig.Instance.RankedStatus + ":</color></b> " + PluginConfig.Instance.Loading + "...";
         [UIValue("leaderboard-ranked-status")]
         protected string leaderboardRankedStatus {
             get => _leaderboardRankedStatus;
@@ -219,7 +219,7 @@ namespace ScoreSaber.UI.Leaderboard {
         public void SetGlobalRanking(string globalRanking, bool withPrefix = true) {
 
             globalLeaderboardRanking =
-                withPrefix ? "<b><color=#FFDE1A>" + PluginConfig.Instance.GlobalRank + $": </color></b>{globalRanking}" : globalRanking;
+                withPrefix ? "<b><color=#FFDE1A>" + PluginConfig.Instance.GlobalRanking + $": </color></b>{globalRanking}" : globalRanking;
         }
 
         public void SetRankedStatus(string rankedStatus) {
