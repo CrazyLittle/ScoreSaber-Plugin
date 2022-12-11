@@ -51,7 +51,7 @@ namespace ScoreSaber.Core.Services {
 
         private async Task GetLocalPlayerInfo1() {
 
-            ChangeLoginStatus(LoginStatus.Info, "OPENSOURCE XX Signing into ScoreSaber... XX");
+            ChangeLoginStatus(LoginStatus.Info, PluginConfig.Instance.LoginInfo);
 
             int attempts = 1;
 
@@ -61,28 +61,28 @@ namespace ScoreSaber.Core.Services {
                     bool authenticated = await AuthenticateWithScoreSaber(steamInfo);
                     if (authenticated) {
                         LocalPlayerInfo = steamInfo;
-                        ChangeLoginStatus(LoginStatus.Success, "OPENSOURCE XX Successfully signed into ScoreSaber! XX");
+                        ChangeLoginStatus(LoginStatus.Success, PluginConfig.Instance.LoginSuccess);
                         break;
                     } else {
-                        ChangeLoginStatus(LoginStatus.Error, $"Failed, attempting again ({attempts} of 3 tries...)");
+                        ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginRetry + $" ({attempts} of 3 tries...)");
                         attempts++;
                         await Task.Delay(4000);
                     }
                 } else {
                     Plugin.Log.Error("Steamworks is not initialized!");
-                    ChangeLoginStatus(LoginStatus.Error, "Failed to authenticate! Error getting steam info");
+                    ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginFailedSteam);
                     break;
                 }
             }
 
             if (Status != LoginStatus.Success) {
-                ChangeLoginStatus(LoginStatus.Error, "Failed to authenticate with ScoreSaber! Please restart your game");
+                ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginFailed);
             }
         }
 
         private void GetLocalPlayerInfo2() {
 
-            ChangeLoginStatus(LoginStatus.Info, "OPENSOURCE XX Signing into ScoreSaber... XX");
+            ChangeLoginStatus(LoginStatus.Info, PluginConfig.Instance.LoginInfo);
 
             Users.GetLoggedInUser().OnComplete(delegate (Message<User> loggedInMessage) {
                 if (!loggedInMessage.IsError) {
@@ -99,22 +99,22 @@ namespace ScoreSaber.Core.Services {
                                         bool authenticated = await AuthenticateWithScoreSaber(oculusInfo);
                                         if (authenticated) {
                                             LocalPlayerInfo = oculusInfo;
-                                            ChangeLoginStatus(LoginStatus.Success, "OPENSOURCE XX Successfully signed into ScoreSaber! XX");
+                                            ChangeLoginStatus(LoginStatus.Success, PluginConfig.Instance.LoginSuccess);
                                         } else {
-                                            ChangeLoginStatus(LoginStatus.Error, "Failed to authenticate with ScoreSaber! Please restart your game");
+                                            ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginFailed);
                                         }
                                     });
 
                                 } else {
-                                    ChangeLoginStatus(LoginStatus.Error, "Failed to authenticate! Error getting oculus info");
+                                    ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginFailedSteam);
                                 }
                             });
                         } else {
-                            ChangeLoginStatus(LoginStatus.Error, "Failed to authenticate! Error getting oculus info");
+                            ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginFailedSteam);
                         }
                     });
                 } else {
-                    ChangeLoginStatus(LoginStatus.Error, "Failed to authenticate! Error getting oculus info");
+                    ChangeLoginStatus(LoginStatus.Error, PluginConfig.Instance.LoginFailedSteam);
                 }
             });
         }

@@ -243,7 +243,7 @@ namespace ScoreSaber.Core.Daemons {
                     string response = null;
 
                     Plugin.Log.Info("Attempting score upload...");
-                    UploadStatusChanged?.Invoke(UploadStatus.Uploading, "OPENSOURCE XX Uploading score... XX");
+                    UploadStatusChanged?.Invoke(UploadStatus.Uploading, PluginConfig.Instance.Uploading);
 
                     try {
                         response = await Plugin.HttpInstance.PostAsync("/game/upload", form);
@@ -260,7 +260,7 @@ namespace ScoreSaber.Core.Daemons {
                             done = true;
                         } else {
                             if (response == "banned") {
-                                UploadStatusChanged?.Invoke(UploadStatus.Error, "OPENSOURCE XX Failed to upload (banned) XX");
+                                UploadStatusChanged?.Invoke(UploadStatus.Error, PluginConfig.Instance.UploadBanned);
                                 done = true;
                                 failed = true;
                             }
@@ -273,7 +273,7 @@ namespace ScoreSaber.Core.Daemons {
                     }
 
                     if (attempts < 4) {
-                        UploadStatusChanged?.Invoke(UploadStatus.Retrying, $"OPENSOURCE XX Failed, attempting again ({attempts} of 3 tries...) XX");
+                        UploadStatusChanged?.Invoke(UploadStatus.Retrying, PluginConfig.Instance.UploadRetrying + $" ({attempts} of 3 tries...) XX");
                         attempts++;
                         await Task.Delay(1000);
                     } else {
@@ -285,9 +285,9 @@ namespace ScoreSaber.Core.Daemons {
                 if (!failed) {
                     SaveLocalReplay(rawDataCasted, difficultyBeatmap, serializedReplay);
                     Plugin.Log.Info("Score uploaded!");
-                    UploadStatusChanged?.Invoke(UploadStatus.Success, $"OPENSOURCE XX Score uploaded! XX");
+                    UploadStatusChanged?.Invoke(UploadStatus.Success, PluginConfig.Instance.UploadSuccess);
                 } else {
-                    UploadStatusChanged?.Invoke(UploadStatus.Error, $"OPENSOURCE XX Failed to upload score. XX");
+                    UploadStatusChanged?.Invoke(UploadStatus.Error, PluginConfig.Instance.UploadError);
                 }
 
                 Uploading = false;

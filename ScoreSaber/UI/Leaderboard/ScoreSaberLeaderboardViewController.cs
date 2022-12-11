@@ -275,7 +275,7 @@ namespace ScoreSaber.UI.Leaderboard {
                     int playerScoreIndex = GetPlayerScoreIndex(leaderboardData);
                     if (leaderboardTableScoreData.Count != 0) {
                         if (scope == PlatformLeaderboardsModel.ScoresScope.AroundPlayer && playerScoreIndex == -1) {
-                            SetErrorState(tableView, loadingControl, null, null, "You haven't set a score on this leaderboard");
+                            SetErrorState(tableView, loadingControl, null, null, PluginConfig.Instance.ScoreNotSet);
                         } else {
                             tableView.SetScores(leaderboardTableScoreData, playerScoreIndex);
                             loadingControl.ShowText("", false);
@@ -288,8 +288,8 @@ namespace ScoreSaber.UI.Leaderboard {
                     } else {
                         SetErrorState(tableView, loadingControl, null, null,
                             leaderboardPage > 1
-                                ? "No scores on this page"
-                                : "No scores on this leaderboard, be the first!");
+                                ? PluginConfig.Instance.ScorePageEmpty
+                                : PluginConfig.Instance.ScoreBoardEmpty);
                     }
                 }
             } catch (HttpErrorException httpError) {
